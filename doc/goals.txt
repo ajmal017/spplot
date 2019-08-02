@@ -1,0 +1,38 @@
+What to do here:
+
+- use ypython to get stock data
+- use numpy or some combination of such libraries (numpy, scipy, pandas, etc) to organize/plot the data - financial guys like pandas
+- find a graphics library to present the data
+
+
+several modules? just one?
+probably just one, but will need a user interface
+- probs gtk or just tk which comes with python
+- let's start with Tkinter then pyQT if that's not adequate
+
+start with little experiments just trying to use the libraries:
+- can I get a stock back from IBM
+- don't worry about writing a program
+- just see if you can make the libraries work for you
+
+
+relevant links:
+
+Fin libs
+https://news.efinancialcareers.com/uk-en/3000277/python-libraries-for-finance
+
+https://aroussi.com/post/python-yahoo-finance
+
+
+GUI libs
+https://python-gtk-3-tutorial.readthedocs.io/en/latest/
+
+https://docs.python.org/3/library/tk.html
+
+https://blog.resellerclub.com/the-6-best-python-gui-frameworks-for-developers/
+
+https://www.reddit.com/r/Python/comments/9vpc11/best_gui_library/
+
+https://www.analyticsindiamag.com/7-popular-python-libraries-toolkits-desktop-gui-applications/
+
+https://www.analyticsvidhya.com/blog/2015/08/interactive-data-visualization-library-python-bokeh/
