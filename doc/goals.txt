@@ -1,6 +1,6 @@
 What to do here:
 
-- use ypython to get stock data
+- use yfinance to get stock data
 - use numpy or some combination of such libraries (numpy, scipy, pandas, etc) to organize/plot the data - financial guys like pandas
 - find a graphics library to present the data
 
@@ -14,6 +14,10 @@ start with little experiments just trying to use the libraries:
 - can I get a stock back from IBM
 - don't worry about writing a program
 - just see if you can make the libraries work for you
+
+
+
+- Plot data from history across time. Candlestick - open, close, high, low. Four separate graphs and volume too. 
 
 
 relevant links:

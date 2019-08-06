@@ -1,0 +1,106 @@
+yfinance Ticker.history returns a pandas DataFrame object
+
+
+>>> from pandas import DataFrame
+>>> import yfinance as yf
+
+>>> aapl = yf.Ticker("AAPL")
+>>> data = aapl.history(period="1wk")
+
+>>> isinstance(data,DataFrame)
+True
+>>> data.columns
+Index(['Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits'], dtype='object')
+
+>>> data.index
+DatetimeIndex(['2019-07-30', '2019-07-31', '2019-08-01', '2019-08-02',
+               '2019-08-05'],
+              dtype='datetime64[ns]', name='Date', freq=None)
+>>> data.Open
+Date
+2019-07-30    208.76
+2019-07-31    216.42
+2019-08-01    213.90
+2019-08-02    205.53
+2019-08-05    197.99
+Name: Open, dtype: float64
+>>> data.loc['2019-07-31']
+Open                 216.42
+High                 221.37
+Low                  211.30
+Close                213.04
+Volume          69281400.00
+Dividends              0.00
+Stock Splits           0.00
+Name: 2019-07-31 00:00:00, dtype: float64
+>>> data.iloc[1]
+Open                 216.42
+High                 221.37
+Low                  211.30
+Close                213.04
+Volume          69281400.00
+Dividends              0.00
+Stock Splits           0.00
+Name: 2019-07-31 00:00:00, dtype: float64
+>>> data.iloc[1].Open
+216.42
+>>> isinstance(data.iloc[1].Open, float) #yep,works
+True
+
+
+>>> oc = aapl.option_chain()
+>>> oc.calls.bid
+0     42.15
+1     39.65
+2     37.25
+3     34.75
+4     32.15
+5     29.95
+6     27.55
+7     24.95
+8     22.35
+9     20.10
+10    17.80
+11    15.30
+12    13.00
+13    11.25
+14     8.75
+15     6.65
+16     5.40
+17     3.80
+18     2.51
+19     1.51
+20     0.83
+21     0.40
+22     0.20
+23     0.10
+24     0.06
+25     0.03
+26     0.02
+27     0.01
+28     0.01
+29     0.00
+30     0.00
+31     0.00
+32     0.00
+33     0.00
+34     0.00
+35     0.00
+36     0.00
+37     0.00
+38     0.00
+39     0.00
+40     0.00
+Name: bid, dtype: float64
+
+
+
+
+#to make a DF with column names, use a dict rather than just a list
+>>> import pandas as pd
+>>> data = {put data in dictionary}
+>>> df = pd.DataFrame(data)
+
+#to set row names and reset them
+>>> df.set_index('key',inplace=True)
+>>> df.reset_index(inplace=True)
