@@ -28,18 +28,18 @@ def scrape(ticker, command):
 #cols = data.columns
 
 #display
-#window = tkinter.Tk()
-#window.mainloop()
+#root = tkinter.Tk()
+#root.mainloop()
 
 def show(data, title):
-    window = tk.Tk()
+    root = tk.Tk()
     figure = plt.Figure(figsize=(5,4), dpi=350)
     ax1 = figure.add_subplot(111)
-    line = FigureCanvasTkAgg(figure, window)
+    line = FigureCanvasTkAgg(figure, root)
     line.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)
     data.plot(kind='line', legend=True, ax=ax1, color='r',marker='o', fontsize=10)
     ax1.set_title(title)
-    window.mainloop()
+    root.mainloop()
 
 
 #maybe also a command to write to file

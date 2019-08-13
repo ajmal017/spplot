@@ -104,3 +104,47 @@ Name: bid, dtype: float64
 #to set row names and reset them
 >>> df.set_index('key',inplace=True)
 >>> df.reset_index(inplace=True)
+
+
+
+
+
+figure.add_subplot(111)
+121 will have 2 columns
+211 will have two rows
+112 will throw error
+
+data.Open.plot(kind='line', legend=True, ax=ax1, color='r', marker='o', fontsize=10
+#marker='o' gets you notches marked on the line
+#legend gets label for line (not side bar axis label)
+#without ax it won't show up on graph, but kind seems optional so perhaps line is default
+put "plt.style.use('fivethirtyeight')" before your plots and it will look nice and you don't have to use colors or fontsize or anything, marker still optional
+
+
+still need to peruse these:
+
+XXXX https://stackoverflow.com/questions/6920302/how-to-pass-arguments-to-a-button-command-in-tkinter
+
+https://stackoverflow.com/questions/31440167/placing-plot-on-tkinter-main-window-in-python
+
+https://stackoverflow.com/questions/13197469/how-to-get-a-matplotlib-figure-to-scroll-resize-properly-in-a-tkinter-gui
+
+https://stackoverflow.com/questions/54961417/why-are-my-buttons-and-frame-in-python-tkinter-not-arranging-in-the-proper-geome
+
+http://effbot.org/tkinterbook/button.htm
+
+http://www.effbot.org/tkinterbook/grid.htm
+
+XXXX https://stackoverflow.com/questions/10727131/why-is-tkinter-entrys-get-function-returning-nothing
+
+https://www.tutorialspoint.com/simple-registration-form-using-python-tkinter
+
+https://www.tutorialspoint.com/python/tk_frame.htm
+
+https://stackoverflow.com/questions/13197469/how-to-get-a-matplotlib-figure-to-scroll-resize-properly-in-a-tkinter-gui
+
+https://effbot.org/tkinterbook/tkinter-events-and-bindings.htm
+
+https://www.youtube.com/watch?v=Zw6M-BnAPP0
+
+https://www.youtube.com/watch?v=JQ7QP5rPvjU
