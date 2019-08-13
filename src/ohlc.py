@@ -4,10 +4,8 @@ from pandas import DataFrame
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-
-#need graph to replace instead of add more - probably with .clear()
+#oop style broken af
 #graph still fills too far in screen, may introduce scroll bar
-#put volume below
 
 class graphic:
     def __init__(self):
@@ -30,9 +28,13 @@ class graphic:
         self.volume = tk.Button(self.options, text="Volume", command=lambda pd='1mo': self.graph_data(pd, volume=True))
         self.volume.grid(row=2,column=1)
         #section for the graph
-        self.visual = tk.Frame(self.root)
-        self.visual.pack(side=tk.LEFT, fill=tk.BOTH)
-        
+        self.visual = tk.Frame(self.root, width=1000, height=1000)
+        self.visual.pack(side=tk.RIGHT, fill=tk.BOTH)
+        self.figure1 = plt.Figure(figsize=(5,6), dpi=200)
+        self.figure2 = plt.Figure(figsize=(5,2), dpi=100)
+        self.ax1 = self.figure1.add_subplot(111)
+        self.ax2 = self.figure2.add_subplot(111)
+                
     def graph_data(self, pd, volume=False):
         try:
             ticker = yf.Ticker(self.get_tick.get())
@@ -40,34 +42,31 @@ class graphic:
             if volume:
                 self.plot_volume(data)
             else:
-                self.plot_it(data)
+                self.plot_ohlc(data)
         except:
             tk.messagebox.showinfo("Whoops!", "You must enter a valid ticker to get data.")
 
-    def plot_it(self, data):
+    def plot_ohlc(self, data):
         #plt.style.use('fivethirtyeight')
-        figure = plt.Figure(figsize=(5,6), dpi=200)
-        ax1 = figure.add_subplot(111)
-        data.Open.plot(kind='line', legend=True, ax=ax1)
-        data.High.plot(kind='line', legend=True, ax=ax1)
-        data.Low.plot(kind='line', legend=True, ax=ax1)
-        data.Close.plot(kind='line', legend=True, ax=ax1)
-        ax1.set_title("OHLC")
-        ax1.set_xlabel('Date')
-        ax1.set_ylabel('USD')
-        line = FigureCanvasTkAgg(figure, self.visual)
-        line.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-
+        self.ax1.clear()
+        data.Open.plot(kind='line', legend=True, ax=self.ax1)
+        data.High.plot(kind='line', legend=True, ax=self.ax1)
+        data.Low.plot(kind='line', legend=True, ax=self.ax1)
+        data.Close.plot(kind='line', legend=True, ax=self.ax1)
+        self.ax1.set_title("OHLC")
+        self.ax1.set_xlabel('Date')
+        self.ax1.set_ylabel('USD')
+        self.canvas1 = FigureCanvasTkAgg(self.figure1, master=self.visual)
+        self.canvas1.get_tk_widget().place(x=0, y=0, relwidth=1, relheight=0.6)
+        
     def plot_volume(self, data):
-        figure = plt.Figure(figsize=(5,6), dpi=200)
-        ax1 = figure.add_subplot(111)
-        data.Volume.plot(kind='line', legend=True, ax=ax1)
-        ax1.set_title("Volume")
-        ax1.set_xlabel('Date')
-        ax1.set_ylabel('Stocks in Millions')
-        line = FigureCanvasTkAgg(figure, self.visual)
-        line.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-
+        self.ax2.clear()
+        data.Volume.plot(kind='line', legend=True, ax=self.ax2)
+        self.ax2.set_title("Volume")
+        self.ax2.set_xlabel('Date')
+        self.ax2.set_ylabel('Stocks in Millions')
+        canvas2 = FigureCanvasTkAgg(self.figure2, master=self.visual)
+        canvas2.get_tk_widget().place(x=0, y=600, relwidth=1, relheight=0.4)
         
 ohlc = graphic()
 ohlc.root.mainloop()
